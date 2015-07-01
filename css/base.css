@@ -1,0 +1,108 @@
+body
+{
+    
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f4f7f8;
+    border-radius: 8px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+#nav_container
+{
+  width:600px;
+  height:70px;
+  background:#1ABC9C;
+  margin:0 auto;
+  border-radius:10px;
+  text-align:center;
+}
+nav span
+{
+  margin-left:40px;
+  font-size:20px;
+  color:white;
+  font-family:sans-serif;
+  position:relative;top:22px;left:-15px;
+  z-index:1;
+  padding:50px 0px 50px 0px;
+  cursor:pointer;
+}
+nav span:active
+{
+  opacity:0.3;
+}
+#selector
+{
+  height:100%;
+  width:80px;
+  background: #109177;
+  position:relative;top:-24px;left:61px;
+  z-index:0;
+}
+
+/* -------------------------------------
+ * Menu Bar
+ * ------------------------------------- */
+.wrapper {
+  position: relative;
+  left: 0;
+}
+#menu {
+  position: fixed;
+  width: 240px;
+  height: 100%;
+  top: 0;
+  left: -240px;
+  z-index: 1000;
+  background-color: #186;
+  overflow: auto;
+}
+#menu,
+.wrapper {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#menu ul {
+  list-style: outside none none;
+}
+#menu ul h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 2.5em;
+  cursor: default;
+}
+#menu ul li:first-child {
+  background-color: #668;
+}
+#menu ul li {
+  padding: 15px 0 15px 15px;
+  text-align: left;
+  border: solid #fff;
+  border-width: 0 0 .5px 0;
+}
+#menu ul li:hover {
+  background-color: #668;
+}
+#menu ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 300;
+  font-size: 1.5em;
+}
+#menu.menu-open {
+  left: 0px;
+}
+.menu-push {
+  left: 240px;
+}
+.menu-btn {
+  color: #186;
+  border: none;
+  position: fixed;
+  padding: 30px;
+  background-color: transparent;
+}
