@@ -53,7 +53,7 @@ $_SESSION['captcha'] = simple_php_captcha( array(
 	});
 	</script>
 	</head>
-	<body class="wrapper">
+	<body class="rel">
 
  
   <nav id="menu">
@@ -61,15 +61,15 @@ $_SESSION['captcha'] = simple_php_captcha( array(
       <li><h1><i class="fa fa-list"></i> Menu</h1></li>
       <li><a href="index.php"><i class="fa fa-check"></i> Home</a></li>
       <li><a href="login.php"><i class="fa fa-check"></i> Login</a></li>
-      <li><a href="Register.php"><i class="fa fa-check"></i>Register</a></li>
+      <li><a href="registration.php"><i class="fa fa-check"></i>Register</a></li>
       <li><a href="#paragraph4"><i class="fa fa-check"></i> Paragraph 4</a></li>
-      <li><a href="#paragraph5"><i class="fa fa-check"></i> Paragraph 5</a></li>
+      <li><a href=""><i class="fa fa-check"></i> Back</a></li>
     </ul>
   </nav>
   <button href="#" class="menu-btn"><i class="fa fa-bars fa-3x"></i></button>
   <script src="navbar.js"></script>
 </div>
-		<div style="width: 500px;margin:auto;">
+		<div style="width: 500px;margin:auto;" id="form">
 		
 			<div id="title">
 				<h1>Registration Form </h1>
