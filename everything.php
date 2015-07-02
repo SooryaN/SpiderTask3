@@ -73,7 +73,7 @@ else if($_POST['page']=='Login')
 	{
 	if (mysqli_num_rows($q)==0)
 		{
-			echo $uname." is not registered yet.<a href='register.php'>Register?</a>";
+			echo $uname." is not registered yet.<a href='registration.php'>Register?</a>";
  			exit;
 	}
 	else
@@ -87,6 +87,8 @@ else if($_POST['page']=='Login')
 			$_SESSION["username"]=$uname;
 			echo "Login Successful.";
 		}
+		else
+			echo "Incorrect Password. Please try again.";
 	}
 	}
 	
