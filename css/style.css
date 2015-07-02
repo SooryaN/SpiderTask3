@@ -1,0 +1,90 @@
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #e8eeef;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+   
+}
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus{
+	background: #d2d9dd;
+}
+select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+}
+.form_style button{
+    
+    color: #FFF;
+   
+    background: #1abc9c;
+    font-size: 1em;
+    text-align: center;
+    font-style: normal;
+    width: 50%;
+    height:40px;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+    border-radius:10px;
+     margin:auto;
+
+}
+ .form_style button:hover:;
+{
+    background: #109177;
+}.form_style #Question #Ch1 #Ch2 #Ch3 #Ch4{
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+}
+.form_style #FormSubmit #Qsubmit{
+	display: block;
+	background: #6C93AD;
+	border: 1px solid #4B6170;
+	color: #FFFFFF;
+	margin-top: 5px;
+	padding: 6px 9px 6px 9px;
+	border-radius: 5px;
+}
+#responds{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+#responds li {
+	list-style: none;
+	padding: 15px;
+	background: rgb(221, 240, 255);
+	margin-bottom: 5px;
+	border-radius: 5px;
+	max-width: 400px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 13px;
+}
+#responds li.sel {
+	background: rgb(255, 221, 221);
+}
+.del_wrapper{float:right;}
+.content_wrapper {
+	max-width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+}
