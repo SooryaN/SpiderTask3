@@ -1,5 +1,6 @@
 <?php 
 session_start();
+$rel=$_SESSION['dir'];
 include_once("config.php");
 if($_POST["page"]=="SubmitQ") 
 {	$question=$_POST['Question'];
@@ -7,6 +8,7 @@ if($_POST["page"]=="SubmitQ")
 	$Ch2=$_POST['Ch2'];
 	$Ch3=$_POST['Ch3'];
 	$Ch4=$_POST['Ch4'];
+	if(isset($_POST['Ans']))
 	$Ans=$_POST['Ans'];
 	$category=$_POST['category'];
 	
@@ -69,7 +71,7 @@ elseif(isset($_POST["recordToDelete"]) && strlen($_POST["recordToDelete"])>0 && 
 	}
 	$mysqli->close(); //close db connection
 }
-elseif(isset($_POST["QID"]))
+elseif($_POST["page"]=='quiz')
 {
 	$id=$_POST['QID'];
 	$check=$_POST['check'];
@@ -95,8 +97,10 @@ elseif(isset($_POST["QID"]))
 		$sql = "UPDATE Userdata SET Answered='$arr' Where Username='$uname'";
 		$q=mysqli_query($mysqli,$sql);
 	}
+	
 	if ($check==$row[0])
 	{
+		
 		echo "correct";
 	
 	
@@ -164,6 +168,7 @@ if($_POST['page']=='Reg')
 	$stmt->bind_param("sss", $uname,$name,$pwd);
 	$stmt->execute();
 	echo "Congratulations, you have been successfully registered.";
+	header("refresh:1; url=login");
 	}
 	
 	$mysqli->close(); //close db connection
@@ -205,11 +210,20 @@ else if($_POST['page']=='Login')
 		{
 			$_SESSION["username"]=$uname;
 			echo "Login Successful.";
+			header("refresh:0; url=<?php echo $rel ?>user/$uname");
 		}
 		else
 			echo "Incorrect Password. Please try again.";
 	}
 	}
+elseif(isset($_POST['logout']))
+{
+	session_start();
+if(session_destroy())
+{
+header("refresh:0; url=login");
+}
+}
 else
 {
 	//Output error

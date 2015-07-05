@@ -1,8 +1,9 @@
 <?php
     session_start();
+$rel=substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'],basename($_SERVER['SCRIPT_NAME'])));
+$_SESSION['dir']=$rel;    
     
-    
-    include("simple-php-captcha.php");
+    include("captcha/simple-php-captcha.php");
     
 $_SESSION['captcha'] = simple_php_captcha( array(
     'min_length' => 5,
@@ -27,8 +28,8 @@ $_SESSION['captcha'] = simple_php_captcha( array(
   <meta charset="UTF-8">
 
   <title>Register</title>
-  <link href="css/main.css" rel="stylesheet" type="text/css">
-  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo $rel ?>css/main.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo $rel ?>css/base.css" rel="stylesheet" type="text/css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
   <script type="text/javascript">
@@ -43,7 +44,7 @@ $(document).ready(function() {
                 var myData = {page:'Reg',name:$("#name").val(),username:$("#username").val(),password:$("#password").val(),captcha:$("#captcha").val()}; //build a post data structure
                 $.post('everything.php', myData, function(returnedData) {
                     if(returnedData.search('successfully registered.')!=-1)
-                    {window.setTimeout(function(){window.location = "http://localhost/SpiderTask3/login.php"}, 1500);}
+                    {window.setTimeout(function(){window.location = "http://localhost<?php echo $rel ?>login"}, 1500);}
                     $("#responds").html(returnedData);
                     $("#FormSubmit").show(); 
                     $("#LoadingImage").hide();
@@ -57,35 +58,30 @@ $(document).ready(function() {
 <header id="page_header">
 <ul>
 <li><h1>Join the Club!</h1></li>
-<li><h1><a href="login.php">Login?</a></h1></li>
+<li><h1><a href="<?php echo $rel ?>login">Login?</a></h1></li>
 </ul></header>
-  <nav id="menu">
-    <ul>
-      <li>
-        <h1><i class="fa fa-list"></i> Menu</h1>
+<nav id="menu">
+  <ul>
+    <li>
+      <h1><i class="fa fa-list"></i> Menu</h1>
+    </li>
+    <li>
+      <a href="<?php echo $rel ?>home"><i class="fa fa-check"></i> Home</a>
+    </li>
+    <li>
+        <a href="<?php echo $rel ?>login"><i class="fa fa-check"></i>Login/Register</a>
       </li>
-
-
-      <li>
-        <a href="index.php"><i class="fa fa-check"></i> Home</a>
-      </li>
-
-
-      <li>
-        <a href="login.php"><i class="fa fa-check"></i>Login/Register</a>
-      </li>
-
-      <li>
-        <a href="submit.php"><i class="fa fa-check"></i> Submit Qs</a>
-      </li>
-
-
-        <li> <a href="answer.php"><i class="fa fa-check"></i> Answer Qs</a> </li>
+    
+    <li>
+      <a href="<?php echo $rel ?>submit"><i class="fa fa-check"></i>Submit Qs</a>
+    </li>
+      <li> <a href="<?php echo $rel ?>quiz"><i class="fa fa-check"></i> Answer Qs</a> </li>
+       <li> <a href="<?php echo $rel ?>user"><i class="fa fa-check"></i> View Users</a> </li>
       <li> <a onclick="function(e){e.preventDefault();this.parents('header').hide();}"><i class="fa fa-check"></i> Exit</a> </li>
     
-    </ul>
-  </nav>
-  <button class="menu-btn fa fa-bars fa-3x"></button> <script src="navbar.js"></script>
+  </ul>
+</nav>
+  <button class="menu-btn fa fa-bars">Menu</button> <script src="<?php echo $rel ?>navbar.js"></script>
 
   <div id="form">
     <div id="title">
@@ -114,7 +110,7 @@ $(document).ready(function() {
         <input id="FormSubmit" name="submit" type="submit" value="Register"> <img id="LoadingImage" src="images/loading.gif" style="display:none"><br>
         <br>
         <div id="nregister">
-      Already Registered? <a href="login.php">Login here!</a>
+      Already Registered? <a href="<?php echo $rel ?>login">Login here!</a>
       </div>
   </div>
 </body>

@@ -2,15 +2,16 @@
 if (!isset($_SESSION['username']))
 {
 	echo '<script>alert("Looks like you arent Logged in");</script>"';
-	header('refresh:0; url=login.php');}
-  $uname=$_SESSION['username']; ?>
+	header('refresh:0; url=login');}
+  $uname=$_SESSION['username'];
+  $rel=$_SESSION['dir']; ?>
 <html>
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Submit</title>
-  <link href="css/base.css" rel="stylesheet" type="text/css">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="<?php echo $rel ?>css/base.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo $rel ?>css/style.css" rel="stylesheet" type="text/css" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
   <script type="text/javascript">
@@ -59,7 +60,7 @@ if (!isset($_SESSION['username']))
         $(this).hide(); //hide currently clicked delete button
         jQuery.ajax({
           type: "POST", // HTTP method POST or GET
-          url: "everything.php", //Where to make Ajax calls
+          url: "<?php echo $rel ?>everything.php", //Where to make Ajax calls
           data: myData, //Form variables
           success: function (response) {
             //on success, hide  element user wants to delete.
@@ -81,29 +82,37 @@ if (!isset($_SESSION['username']))
 <ul>
 <li><h1>Cooleos Questions</h1></li>
 <li><h1><a href="" onclick="instruct();">Instructions</a></h1></li>
-<li><h1><a href="logout.php">Logout</a></h1></li>
+<li><h1><a href="<?php echo $rel ?>logout.php">Logout</a></h1></li>
 </ul></header>
-  <nav id="menu">
-    <ul>
-      <li>
-        <h1><i class="fa fa-list"></i> Menu</h1> </li>
-      <li> <a href="index.php"><i class="fa fa-check"></i> Home</a> </li>
-      <li>
-        <a href="login.php"><i class="fa fa-check"></i>Login/Register</a>
+<nav id="menu">
+  <ul>
+    <li>
+      <h1><i class="fa fa-list"></i> Menu</h1>
+    </li>
+    <li>
+      <a href="<?php echo $rel ?>home"><i class="fa fa-check"></i> Home</a>
+    </li>
+    <li>
+        <a href="<?php echo $rel ?>login"><i class="fa fa-check"></i>Login/Register</a>
       </li>
-      <li> <a href="submit.php"><i class="fa fa-check"></i> Submit Qs</a> </li>
-      <li> <a href="answer.php"><i class="fa fa-check"></i> Answer Qs</a> </li>
+    
+    <li>
+      <a href="<?php echo $rel ?>submit"><i class="fa fa-check"></i>Submit Qs</a>
+    </li>
+      <li> <a href="<?php echo $rel ?>quiz"><i class="fa fa-check"></i> Answer Qs</a> </li>
+       <li> <a href="<?php echo $rel ?>user"><i class="fa fa-check"></i> View Users</a> </li>
       <li> <a onclick="function(e){e.preventDefault();this.parents('header').hide();}"><i class="fa fa-check"></i> Exit</a> </li>
-    </ul>
-  </nav>
-  <button class="menu-btn fa fa-bars fa-3x"></button>
-  <script src="navbar.js"></script>
+    
+  </ul>
+</nav>
+  <button class="menu-btn fa fa-bars">Menu</button>
+  <script src="<?php echo $rel ?>navbar.js"></script>
   <div class="content_wrapper">
     <div id="responds">
       <h3 style='margin-left:13%'>Questions you've published</h3>
       <ul id="respondsul">
         <?php //include db configuration file 
-        include_once( "config.php"); //MySQL query 
+        include_once("config.php"); //MySQL query 
         $q=mysqli_query($mysqli, "SELECT ID,Question,Ch1,Ch2,Ch3,Ch4 FROM Questions where User='$uname'"); //get all records from add_delete_record table 
         if($q) { while($row=mysqli_fetch_array($q, MYSQLI_ASSOC)) 
         { 
@@ -145,7 +154,7 @@ if (!isset($_SESSION['username']))
 			<option value="Miscalleneous">Miscalleneous</option>
 		</select></div>
 		<div id="error"></div>
-      <button id="FormSubmit" style="display:none;">Add record</button> <img src="images/loading.gif" style="display:none;" id="LoadingImage" /> </div>
+      <button id="FormSubmit" style="display:none;">Add record</button> <img src="<?php echo $rel ?>images/loading.gif" style="display:none;" id="LoadingImage" /> </div>
   </div>
 </body>
 

@@ -2,25 +2,26 @@
 if (!isset($_SESSION['username']))
 {
   echo '<script>alert("Looks like you arent Logged in");</script>"';
-  header('refresh:0; url=login.php');}
-  $uname=$_SESSION['username']; ?>
+  header('refresh:0; url=login');}
+  $uname=$_SESSION['username'];
+  $rel=$_SESSION['dir']; ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Submit</title>
-<link href="css/base.css" rel="stylesheet" type="text/css">
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $rel ?>css/base.css" rel="stylesheet" type="text/css">
+<link href="<?php echo $rel ?>css/style.css" rel="stylesheet" type="text/css" />
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
 <script>
   $(document).ready(function () {
-    $("body").on("click", ".container .content .card a", function (e){
+    $("body").on("click", ".container .content .card li", function (e){
       e.preventDefault();
       var ParentID = $(this).parents('div').attr('id').split('_')[1];
       var myData = {
-        QID: ParentID,check:$(this).html() 
+        page:'quiz',QID: ParentID,check:$(this).html() 
       }; //build a post data structure
       var li=$("#" + $(this).parents('div').attr('id'));
        //change background of this element by adding class
@@ -30,7 +31,7 @@ if (!isset($_SESSION['username']))
         url: "everything.php", //Where to make Ajax calls
         data: myData, //Form variables
         success: function (response) {
-          console.log(li);
+          console.log(response);
           if(response.search("correct")!=-1)
           {
             li.addClass('correct');
@@ -58,7 +59,7 @@ if (!isset($_SESSION['username']))
 <div id="page_header">
 <ul>
 <li><h1>Gray matter testing site</h1></li>
-<li><h1><a href="logout.php">Logout</a></h1></li>
+<li><h1><a href='logout.php'>Logout</a></h1></li>
 </ul>
 </div>
 <nav id="menu">
@@ -67,21 +68,22 @@ if (!isset($_SESSION['username']))
       <h1><i class="fa fa-list"></i> Menu</h1>
     </li>
     <li>
-      <a href="index.php"><i class="fa fa-check"></i> Home</a>
+      <a href="home"><i class="fa fa-check"></i> Home</a>
     </li>
     <li>
-        <a href="login.php"><i class="fa fa-check"></i>Login/Register</a>
+        <a href="login"><i class="fa fa-check"></i>Login/Register</a>
       </li>
     
     <li>
-      <a href="submit.php"><i class="fa fa-check"></i>Submit Qs</a>
+      <a href="submit"><i class="fa fa-check"></i>Submit Qs</a>
     </li>
-      <li> <a href="answer.php"><i class="fa fa-check"></i> Answer Qs</a> </li>
+      <li> <a href="quiz"><i class="fa fa-check"></i> Answer Qs</a> </li>
+       <li> <a href="<?php echo $rel ?>user"><i class="fa fa-check"></i> View Users</a> </li>
       <li> <a onclick="function(e){e.preventDefault();this.parents('header').hide();}"><i class="fa fa-check"></i> Exit</a> </li>
     
   </ul>
 </nav>
-<button class="menu-btn fa fa-bars fa-3x" ></button> <script src="navbar.js"></script>
+<button class="menu-btn fa fa-bars" >Menu</button> <script src="<?php echo $rel ?>navbar.js"></script>
 <div class="container">
     <div class="content">
         <?php //include db configuration file 
@@ -102,10 +104,10 @@ if (!isset($_SESSION['username']))
         { 
           echo '<div class="card" id="item_'.$row["ID"]. '">'; 
           echo '<b>Q.'.$row[ "Question"]. '</b><br><br>'; 
-          echo '<a href="">'.$row[ "Ch1"].'</a><br>'; 
-          echo '<a href="">'.$row[ "Ch2"].'</a><br>'; 
-          echo '<a href="">'.$row[ "Ch3"].'</a><br>';
-          echo '<a href="">'.$row[ "Ch4"].'</a><br></div>'; 
+          echo '<li>'.$row[ "Ch1"].'</li><br>'; 
+          echo '<li>'.$row[ "Ch2"].'</li><br>'; 
+          echo '<li>'.$row[ "Ch3"].'</li><br>';
+          echo '<li>'.$row[ "Ch4"].'</li><br></div>'; 
           } 
           
         $mysqli->close(); 
@@ -117,7 +119,7 @@ if (!isset($_SESSION['username']))
       return !$.trim(el.html())
   }
   if (isEmpty($('.content'))) {
-      $('.content').hide();$('.container').append("<h1 style='background:rgba(255,255,255,0.5);padding:2%;'><br>Woah! Looks like you've answered all the questions.<br>Want to add some more <a href='submit.php'>here</a>?<br>Or bask in your glory <a href='profile.php'>here</a>.</h1>");}
+      $('.content').hide();$('.container').append("<h1 style='background:rgba(255,255,255,0.5);padding:2%;'><br>Woah! Looks like you've answered all the questions.<br>Want to add some more <a href='<?php echo $rel ?>submit'>here</a>?<br>Or bask in your glory <a href='<?php echo $rel ?>leaderboard'>here</a>.</h1>");}
 </script>
 </body>
 </html>
