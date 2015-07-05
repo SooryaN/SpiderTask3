@@ -1,8 +1,13 @@
-body
+@import url(http://fonts.googleapis.com/css?family=Architects+Daughter);
+body,h2
 {
-    background: #444;
-    border-radius: 8px;
-    font-family: Georgia, "Times New Roman", Times, serif;
+  background-image: url("../images/bg.jpg");
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Architects Daughter', cursive;
 }
 
 /* -------------------------------------
@@ -14,10 +19,10 @@ body
 }
 #menu {
   position: fixed;
-  width: 240px;
+  width: 300px;
   height: 100%;
   top: 0;
-  left: -240px;
+  left: -300px;
 
   z-index: 1000;
   background-color: #186;
@@ -44,7 +49,8 @@ body
   background-color: #8f9691;
 }
 #menu ul li {
-  padding: 15px 0 15px 15px;
+  margin:3%;
+  padding: 15px 15px 15px 15px;
   text-align: left;
   border: solid #fff;
   border-width: 0 0 .5px 0;
@@ -69,8 +75,59 @@ body
   color: #186;
   border: none;
   position: fixed;
-  top:30px;
+  top:17%;
   left:30px;
-  padding: 30px;
+  padding: 15px;
+  box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) ;
   background-color: transparent;
+  font-size:2em;
+}
+#page_header {
+  background: #343838;
+  width: 100%;
+  padding: 5px;
+  margin-left:-6px;
+
+}
+
+#page_header ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#page_header ul li{
+  display:inline-block;
+  overflow:hidden;
+
+}
+#page_header h1
+{
+  font-size: 2.5em;
+  margin: 10px;
+  color: #00dffc;
+  margin-left:40px;
+  font-family: 'Architects Daughter', cursive;
+}
+#page_header h1 a
+{
+  margin: 10px;
+  color: #00dffc;
+  ;
+  top:10px;
+  right:10px;
+  font-family: 'Architects Daughter', cursive;
+  text-decoration: none;
+}
+#page_header li:first-child
+{
+  background-color:rgba(0,130,240,0.4);
+  border-radius:10px;
+  padding-right:40px;
+}
+
+#page_header li a:hover
+{
+  background-color:rgba(255,255,255,0.4);
+  border-radius:10px;
+  padding:2px;
 }

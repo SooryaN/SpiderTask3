@@ -1,8 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Architects+Daughter);
 input[type="text"],
 input[type="number"],
 textarea,
 select {
-    font-family: Georgia, "Times New Roman", Times, serif;
     background: rgba(255,255,255,.1);
     border: none;
     border-radius: 4px;
@@ -10,15 +10,14 @@ select {
     margin: 0;
     outline: 0;
     padding: 7px;
-    width: 100%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
+    width: 400px;
     background-color: #e8eeef;
     color:#8a97a0;
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     margin-bottom: 30px;
+    font-family: 'Architects Daughter', cursive;
+
    
 }
 input[type="text"]:focus,
@@ -26,6 +25,7 @@ input[type="number"]:focus,
 textarea:focus,
 select:focus{
 	background: #d2d9dd;
+    box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
 }
 select{
     -webkit-appearance: menulist-button;
@@ -34,24 +34,30 @@ select{
 .form_style button{
     
     color: #FFF;
-   
+    
     background: #1abc9c;
     font-size: 1em;
     text-align: center;
-    font-style: normal;
-    width: 50%;
+    width: 400px;
     height:40px;
     border: 1px solid #16a085;
     border-width: 1px 1px 3px;
     margin-bottom: 10px;
     border-radius:10px;
-     margin:auto;
+    margin:auto;
+    font-family: 'Architects Daughter', cursive;
 
 }
- .form_style button:hover:;
-{
-    background: #109177;
-}.form_style #Question #Ch1 #Ch2 #Ch3 #Ch4{
+.form_style{
+    margin-left:150px;
+    margin-top:100px;
+    width:400px;
+    padding:2%;
+    background-color: rgba(0,255,255,0.3);
+    box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    font-size: 1.3em;
+}
+.form_style #Question #Ch1 #Ch2 #Ch3 #Ch4{
 	border: 1px solid #CCCCCC;
 	border-radius: 5px;
 }
@@ -64,19 +70,25 @@ select{
 	padding: 6px 9px 6px 9px;
 	border-radius: 5px;
 }
+
 #responds{
-	margin: 0px;
-	padding: 0px;
-	list-style: none;
+    width: 500px;
+    height:500px;
+    float:right;
+    margin-right: 150px;
+    margin-bottom: 100px;
+    box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    background-color: rgba(180,0,190,0.3);
+    overflow: auto;
+    overflow-y: scroll;
 }
 #responds li {
 	list-style: none;
-	padding: 15px;
+	padding: 3%;
 	background: rgb(221, 240, 255);
 	margin-bottom: 5px;
 	border-radius: 5px;
-	max-width: 400px;
-	font-family: Georgia, "Times New Roman", Times, serif;
+	width: 90%;
 	font-size: 13px;
 }
 #responds li.sel {
@@ -84,7 +96,67 @@ select{
 }
 .del_wrapper{float:right;}
 .content_wrapper {
-	max-width: 400px;
+	//max-width: 400px;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+body{
+    font-family: 'Architects Daughter', cursive;
+}
+.container{
+    margin:100px;
+    margin-right:120px;
+
+}
+.card {
+    background: white;
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 3px;
+}
+.card li {
+    width:200px;
+    display: inline-block;
+    background: #00b4cc;
+    padding: 5px;
+    border-radius: 3px;
+    color: white;
+    margin: 3px;
+    cursor: pointer;
+}
+.card li:hover {
+    background: #008c9e;
+}
+.container .content {
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    columns: 3;
+    -webkit-column-gap: 1em;
+    -moz-column-gap: 1em;
+    column-gap: 1em;
+}
+.container .card {
+    font-size: 1.4em;
+}
+.container .card {
+    font-size: 1.15em;
+}
+.correct {
+    background:green;
+}
+.wrong {
+    background:red;
+}
+#info {
+  padding:3%;
+  background: #f7f7f7;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+  width: 500px;margin:auto;
+  margin-top:100px;
+  margin-bottom:100px;
+   
 }

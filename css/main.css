@@ -1,92 +1,39 @@
- fieldset{
-    border: none;
-}
- legend {
-    font-size: 1.4em;
-    margin-bottom: 10px;
-}
- label {
-    display: block;
-    margin-bottom: 8px;
-}
- input[type="text"],
- input[type="date"],
- input[type="datetime"],
- input[type="email"],
- input[type="number"],
- input[type="search"],
- input[type="time"],
- input[type="url"],
- input[type="password"],
- 
- textarea,
- select {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    background: rgba(255,255,255,.1);
-    border: none;
-    border-radius: 4px;
+@import url(http://fonts.googleapis.com/css?family=Architects+Daughter);
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+    background: transparent;
+    border:none;
+    border-bottom: 2px dashed #1abc9c;
     font-size: 16px;
     margin: 0;
-    outline: 0;
     padding: 7px;
     width: 100%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    background-color: #e8eeef;
     color:#8a97a0;
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     margin-bottom: 30px;
-   
+    font-family: 'Architects Daughter', cursive;   
 }
-#random
-{
-font-family: Georgia, "Times New Roman", Times, serif;
-    background: rgba(255,255,255,.1);
-    border: none;
-    border-radius: 4px;
-    font-size: 20px;
-    margin: 0;
-    outline: 0;
-    padding: 7px;
-    width: 100%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    background-color: #d2d9dd;
-    color:#000;
-    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    margin-bottom: 30px;
-}
-img{
-	padding-left:25%;
-	width:80%;
-	margin:auto;
-}
-
- input[type="text"]:focus,
- input[type="date"]:focus,
- input[type="datetime"]:focus,
- input[type="email"]:focus,
- input[type="number"]:focus,
- input[type="search"]:focus,
- input[type="time"]:focus,
- input[type="url"]:focus,
- input[type="password"]:focus,
- textarea:focus,
- select:focus{
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus{
     background: #d2d9dd;
 }
- select{
+select{
     -webkit-appearance: menulist-button;
     height:35px;
 }
-
- input[type="submit"],
- input[type="button"]
- {
+input[type="submit"],
+input[type="button"]
+{
     position: relative;
     display: block;
     padding: 19px 39px 18px 39px;
@@ -95,33 +42,43 @@ img{
     background: #1abc9c;
     font-size: 18px;
     text-align: center;
-    font-style: normal;
     width: 100%;
     border: 1px solid #16a085;
     border-width: 1px 1px 3px;
     margin-bottom: 10px;
     border-radius:10px;
+    font-family: 'Architects Daughter', cursive;
+    
 }
- input[type="submit"]:hover,
- input[type="button"]:hover,
 #responds{
     color:red;
 }
-
-   *{
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-    }
-    a{
+a{
     text-decoration: none;
-    color:#000;
-    }
+}
 #form {
-    margin-top:3%;
   padding:3%;
   background: #f7f7f7;
   border: 1px solid rgba(147, 184, 189, 0.8);
-  box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
-  border-radius: 5px;
+  width: 500px;margin:auto;
+  margin-top:100px;
+  margin-bottom:100px;
+   
+}
+body{
+    font-family: 'Architects Daughter', cursive;
+}
+#nregister
+{
+    font-size:1.5em;
+    margin-left:15%;
+}
+#nregister a,
+{
+    color: #1abc9c;
+}
+#nregister a:hover
+{
+    border-radius:5px;
+    background:rgba(123,111,200,0.3);
 }
