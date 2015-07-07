@@ -1,9 +1,6 @@
-<?php
-    session_start();
-$rel=substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'],basename($_SERVER['SCRIPT_NAME'])));
-$_SESSION['dir']=$rel;    
-    
-    include("captcha/simple-php-captcha.php");
+<?php 
+include 'base.php';
+include("captcha/simple-php-captcha.php");
     
 $_SESSION['captcha'] = simple_php_captcha( array(
     'min_length' => 5,
@@ -21,18 +18,13 @@ $_SESSION['captcha'] = simple_php_captcha( array(
     'shadow_offset_y' => 1
 ));
     
-    ?>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-
-  <title>Register</title>
-  <link href="<?php echo $rel ?>css/main.css" rel="stylesheet" type="text/css">
-  <link href="<?php echo $rel ?>css/base.css" rel="stylesheet" type="text/css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-  <script type="text/javascript">
+?>
+<?php startblock( 'css&title') ?>
+<title>Register</title>
+<link href="<?php echo $rel ?>css/main.css" rel="stylesheet" type="text/css">
+<?php endblock() ?>
+<?php startblock( 'script') ?>
+<script type="text/javascript">
 $(document).ready(function() {
 
         $("#FormSubmit").click(function (e) {
@@ -52,38 +44,13 @@ $(document).ready(function() {
         });
     });
   </script>
-</head>
-
-<body class="rel">
-<header id="page_header">
-<ul>
+<?php endblock() ?>
+<?php startblock( 'header_li') ?>
 <li><h1>Join the Club!</h1></li>
 <li><h1><a href="<?php echo $rel ?>login">Login?</a></h1></li>
-</ul></header>
-<nav id="menu">
-  <ul>
-    <li>
-      <h1><i class="fa fa-list"></i> Menu</h1>
-    </li>
-    <li>
-      <a href="<?php echo $rel ?>home"><i class="fa fa-check"></i> Home</a>
-    </li>
-    <li>
-        <a href="<?php echo $rel ?>login"><i class="fa fa-check"></i>Login/Register</a>
-      </li>
-    
-    <li>
-      <a href="<?php echo $rel ?>submit"><i class="fa fa-check"></i>Submit Qs</a>
-    </li>
-      <li> <a href="<?php echo $rel ?>quiz"><i class="fa fa-check"></i> Answer Qs</a> </li>
-       <li> <a href="<?php echo $rel ?>user"><i class="fa fa-check"></i> View Users</a> </li>
-      <li> <a onclick="function(e){e.preventDefault();this.parents('header').hide();}"><i class="fa fa-check"></i> Exit</a> </li>
-    
-  </ul>
-</nav>
-  <button class="menu-btn fa fa-bars">Menu</button> <script src="<?php echo $rel ?>navbar.js"></script>
-
-  <div id="form">
+<?php endblock() ?>
+<?php startblock( 'main') ?>
+<div id="form">
     <div id="title">
       <h1>Registration Form</h1>
     </div>
@@ -113,5 +80,4 @@ $(document).ready(function() {
       Already Registered? <a href="<?php echo $rel ?>login">Login here!</a>
       </div>
   </div>
-</body>
-</html>
+        <?php endblock() ?>
