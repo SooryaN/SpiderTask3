@@ -2,7 +2,7 @@
 session_start();
 $rel=substr($_SERVER[ 'SCRIPT_NAME'], 0, strpos($_SERVER[ 'SCRIPT_NAME'],basename($_SERVER[ 'SCRIPT_NAME']))); 
 $_SESSION['dir']=$rel;
-require_once 'ti.php' ?>
+require_once 'Extras/ti.php' ?>
 <!DOCTYPE html>
 <html>
     
@@ -33,6 +33,14 @@ require_once 'ti.php' ?>
 				    <h1><a href="'.$rel.'logout.php">Logout</a></h1>
 				</li>
 					<li class="user"><h1>Hi '.$name. '</h1></li>"'; 
+                    include_once('config.php');
+                    $sql="SELECT Score from Userdata where Username='$name'";
+                    $q=mysqli_query($mysqli,$sql);
+                    $row=mysqli_fetch_array($q);
+                    echo '
+                    <li>
+                    <h1><a id="score" href="'.$rel.'leaderboard">Score:'.$row["Score"].'</a></h1>
+                </li>';
 				} 
 
 				
