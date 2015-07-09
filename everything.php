@@ -10,6 +10,8 @@ if($_POST["page"]=="SubmitQ")
 	$Ch4=$_POST['Ch4'];
 	if(isset($_POST['Ans']))
 	$Ans=$_POST['Ans'];
+	else
+	$Ans='9p4352938747yve7ts;odjonefiohb3';
 	$category=$_POST['category'];
 	
 	//Basic Form Validation
@@ -21,6 +23,11 @@ if($_POST["page"]=="SubmitQ")
 	else if(!(strlen($Ch1)>0) || !(strlen($Ch2)>0) || !(strlen($Ch3)>0) ||!(strlen($Ch4)>0))
 	{
 		echo "Fill in 4 non choices amigo.";
+		exit;
+	}
+	else if($Ans!=$Ch1 && $Ans!=$Ch2&&$Ans!=$Ch3&&$Ans!=$Ch4)
+	{
+		echo "Enter a valid answer number(1-4) please";
 		exit;
 	}
 	else if($category=='Select Category')
@@ -37,7 +44,9 @@ if($_POST["page"]=="SubmitQ")
 		echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
 		echo '<img src="images/icon_del.gif" border="0" />';
 		echo '</a></div>';
-		echo '</a></div>'; 
+		echo '<div class="del_wrapper"><a href="#" class="edit_button" id="edit-'.$my_id. '">'; 
+        echo 'Edit'; 
+        echo '</a></div>';
 		echo $question. '<br>'; 
 		echo $Ch1. '<br>'; 
 		echo $Ch2. '<br>'; 

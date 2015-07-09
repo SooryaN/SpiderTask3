@@ -1,20 +1,17 @@
-<?php session_start();
+<?php
+include 'base.php';
 if (!isset($_SESSION['username']))
 {
 	echo '<script>alert("Looks like you arent Logged in");</script>"';
 	header('refresh:0; url=login');}
-  $uname=$_SESSION['username'];
-  $rel=$_SESSION['dir']; ?>
-<html>
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Submit</title>
-  <link href="<?php echo $rel ?>css/base.css" rel="stylesheet" type="text/css">
-  <link href="<?php echo $rel ?>css/style.css" rel="stylesheet" type="text/css" />
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-  <script type="text/javascript">
+$uname=$_SESSION['username'];
+?>
+<?php startblock( 'css&title') ?>
+<title>Submit</title>
+<link href="<?php echo $rel ?>css/style.css" rel="stylesheet" type="text/css">
+<?php endblock() ?>
+<?php startblock( 'script') ?>
+<script type="text/javascript">
     $(document).ready(function () {
       $("#Qsubmit").click(function () {
         $("#Qsubmit").hide();
@@ -72,42 +69,118 @@ if (!isset($_SESSION['username']))
           }
         });
       });
+      $("body").on("click", "#responds .edit_button", function (e) {
+        e.preventDefault();
+            e.preventDefault();
+        var clickedID = this.id.split('-'); //Split ID string (Split works as PHP explode)
+        var DbNumberID = clickedID[1]; //and get number from array
+        var Arr=$(this).parents('li').html().split('</div>')[2].split('<br>');
+        $("#Question").val(Arr[0]);
+        $("#Ch1").val(Arr[1]);
+        $("#Ch2").val(Arr[2]);
+        $("#Ch3").val(Arr[3]);
+        Ch4:$("#Ch4").val(Arr[4]);
+        $("#correct").show();
+        $("#choices").show();
+        $("#FormSubmit").show();
+        $("#Qsubmit").hide();
+                var myData = {
+          recordToDelete: DbNumberID
+        }; //build a post data structure
+        $('#item_' + DbNumberID).addClass("sel"); //change background of this element by adding class
+        $(this).hide(); //hide currently clicked delete button
+        jQuery.ajax({
+          type: "POST", // HTTP method POST or GET
+          url: "<?php echo $rel ?>everything.php", //Where to make Ajax calls
+          data: myData, //Form variables
+          success: function (response) {
+            //on success, hide  element user wants to delete.
+            $('#item_' + DbNumberID).fadeOut();
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            //On error, we alert user
+            alert(thrownError);
+          }
+        });
+      });
     });
 
   </script>
-</head>
-
-<body class="rel">
-<header id="page_header">
-<ul>
+<?php endblock() ?>
+<?php startblock( 'header_li') ?>
 <li><h1>Cooleos Questions</h1></li>
-<li><h1><a href="" onclick="instruct();">Instructions</a></h1></li>
-<li><h1><a href="<?php echo $rel ?>logout.php">Logout</a></h1></li>
-</ul></header>
-<nav id="menu">
-  <ul>
-    <li>
-      <h1><i class="fa fa-list"></i> Menu</h1>
-    </li>
-    <li>
-      <a href="<?php echo $rel ?>home"><i class="fa fa-check"></i> Home</a>
-    </li>
-    <li>
-        <a href="<?php echo $rel ?>login"><i class="fa fa-check"></i>Login/Register</a>
-      </li>
+<li><h1><div href="#dialog" name="modal" >Instructions</div></h1></li>
+<?php endblock() ?>
+
+<?php startblock( 'main') ?>
+<div id="boxes">
+
+  
+  <!-- #customize your modal window here -->
+
+  <div id="dialog" class="window">
+    <h1 style="margin:0;padding:0;"><b>Some Basic Instructions</b></h1>| 
+    Enter or Esc to close<br>
+    <h1>1. Fill out your questions of the left hand box</h1>
+    <h1>2. The right hand box shows the questions you've already published</h1>
+    <h1>3. Click on the cross at the top right corner of the question bubble to delete it</h1>
+    <h1>3. Click on the <u>Edit</u> at the top right corner of the question bubble to edit your entry</h1>
+
+  </div>
+
+  
+  <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->  
+  <div id="mask"></div>
+</div>
+
+<script>
+$(document).ready(function() {  
+
+  //select all the a tag with name equal to modal
+  $('div[name=modal]').click(function(e) {
+    //Cancel the link behavior
+    e.preventDefault();
+    //Get the A tag
+    var id = $(this).attr('href');
+  
+    //Get the screen height and width
+    var maskHeight = $(document).height();
+    var maskWidth = $(window).width();
+  
+    //Set height and width to mask to fill up the whole screen
+    $('#mask').css({'width':maskWidth,'height':maskHeight});
     
-    <li>
-      <a href="<?php echo $rel ?>submit"><i class="fa fa-check"></i>Submit Qs</a>
-    </li>
-      <li> <a href="<?php echo $rel ?>quiz"><i class="fa fa-check"></i> Answer Qs</a> </li>
-       <li> <a href="<?php echo $rel ?>user"><i class="fa fa-check"></i> View Users</a> </li>
-      <li> <a onclick="function(e){e.preventDefault();this.parents('header').hide();}"><i class="fa fa-check"></i> Exit</a> </li>
-    
-  </ul>
-</nav>
-  <button class="menu-btn fa fa-bars">Menu</button>
-  <script src="<?php echo $rel ?>navbar.js"></script>
-  <div class="content_wrapper">
+    //transition effect   
+    $('#mask').fadeIn(1000);  
+    $('#mask').fadeTo("slow",0.8);  
+  
+    //Get the window height and width
+    var winH = $(window).height();
+    var winW = $(window).width();
+              
+    //Set the popup window to center
+    $(id).css('left', winW/2-$(id).width()/2);
+  
+    //transition effect
+    $(id).fadeIn(2000); 
+  
+  });
+  
+  //if mask is clicked
+  $('#mask').click(function () {
+    $(this).hide();
+    $('.window').hide();
+  });     
+  
+});
+$(document).keyup(function(e) {
+  if(e.keyCode == 13 || e.keyCode==27) {
+    $('#mask').hide();
+    $('.window').hide();
+  }
+});
+</script>
+<div class="content_wrapper">
     <div id="responds">
       <h3 style='margin-left:13%'>Questions you've published</h3>
       <ul id="respondsul">
@@ -118,8 +191,12 @@ if (!isset($_SESSION['username']))
         { 
         	echo '<li id="item_'.$row[ "ID"]. '">'; 
         	echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row[ "ID"]. '">'; 
-        	echo '<img src="images/icon_del.gif" border="0" />'; 
-        	echo '</a></div>'; 
+        	echo '<img src="'.$rel.'images/icon_del.gif" border="0" />'; 
+        	echo '</a></div>';
+          echo '<div class="del_wrapper"><a href="#" class="edit_button" id="edit-'.$row[ "ID"]. '">'; 
+          echo 'Edit'; 
+          echo '</a></div>';
+           
         	echo $row[ "Question"]. '<br>'; 
         	echo $row[ "Ch1"]. '<br>'; 
         	echo $row[ "Ch2"]. '<br>'; 
@@ -156,6 +233,4 @@ if (!isset($_SESSION['username']))
 		<div id="error"></div>
       <button id="FormSubmit" style="display:none;">Add record</button> <img src="<?php echo $rel ?>images/loading.gif" style="display:none;" id="LoadingImage" /> </div>
   </div>
-</body>
-
-</html>
+        <?php endblock() ?>
