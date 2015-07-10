@@ -2,7 +2,7 @@
 include 'base.php'; ?>
 <?php startblock( 'css&title') ?>
 <title>Leaderboard!</title>
-<link rel='stylesheet' href='<?php echo $rel ?>/css/style.css'>
+<link rel='stylesheet' href='<?php echo $rel ?>css/style.css'>
 <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
 <script src="<?php echo $rel ?>Extras/jquery.highchartTable.js" type="text/javascript"></script>
 <script src="<?php echo $rel ?>Extras/jquery.tablesorter.min.js" type="text/javascript"></script>

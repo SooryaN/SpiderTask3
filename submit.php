@@ -26,10 +26,7 @@ $uname=$_SESSION['username'];
       //##### send add record Ajax request to response.php #########
       $("#FormSubmit").click(function (e) {
         e.preventDefault();
-        if ($("#contentText").val() === '') {
-          alert("Please enter some text!");
-          return false;
-        }
+
         $("#FormSubmit").hide(); //hide submit button
         $("#LoadingImage").show(); //show loading image
         

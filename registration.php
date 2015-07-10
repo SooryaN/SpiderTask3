@@ -5,7 +5,7 @@ include("captcha/simple-php-captcha.php");
 $_SESSION['captcha'] = simple_php_captcha( array(
     'min_length' => 5,
     'max_length' => 7,
-    'fonts' => array($_SERVER['DOCUMENT_ROOT'] . '/' .'REG/captcha/fonts/1.ttf',$_SERVER['DOCUMENT_ROOT'] . '/' . 'REG/captcha/fonts/2.ttf'),
+    'fonts' => array($_SERVER['DOCUMENT_ROOT'] . $rel.'/captcha/fonts/1.ttf',$_SERVER['DOCUMENT_ROOT'] . $rel.'/captcha/fonts/2.ttf'),
     'characters' => 'ABCDEFGHJKLMNPRSTUVWXYZabcdefghjkmnprstuvwxyz23456789',
     'min_font_size' => 20,
     'max_font_size' => 28,
