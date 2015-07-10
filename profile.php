@@ -14,9 +14,6 @@
     	echo 'Select Profile';
     ?></h1>
 </li>
-<li>
-    <h1><a href="" onclick="instruct();">Instructions</a></h1>
-</li>
 <?php endblock() ?>
 <?php startblock( 'main') ?>
     <div class="content">
