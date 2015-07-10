@@ -2,8 +2,12 @@
 RewriteEngine on 
 RewriteRule submit/? submit.php
 RewriteRule login login.php
-RewriteRule quiz answer.php
 RewriteRule register registration.php
 RewriteRule home/? index.php
 RewriteRule ^user/(\w+)/?$ profile.php?username=$1
 RewriteRule ^quiz/(\w+)/?$ answer.php?category=$1
+RewriteRule user/? profile.php?
+RewriteRule quiz answer.php
+RewriteRule leaderboard lboard.php
+
+
